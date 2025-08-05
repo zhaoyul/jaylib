@@ -59,7 +59,7 @@ You no longer need to put any dependencies on your system to get jaylib, it
 should autodetect and build right out of the box.
 
 ```
-[sudo] jpm install https://github.com/janet-lang/jaylib.git
+[sudo] jpm install https://github.com/zhaoyul/jaylib
 ```
 
 ## Documentation
