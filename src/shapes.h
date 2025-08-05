@@ -300,7 +300,7 @@ static Janet cfun_DrawTriangleLines(int32_t argc, Janet *argv) {
 }
 
 static Janet cfun_DrawTriangleFan(int32_t argc, Janet *argv) {
-    janet_fixarity(argc, 2);
+    janet_fixarity(argc, 3);
     int32_t len;
     Vector2 *points = jaylib_getvec2s(argv, 0, &len);
     Color color = jaylib_getcolor(argv, 1);
