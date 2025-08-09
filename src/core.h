@@ -852,6 +852,14 @@ static Janet cfun_EndMode3D(int32_t argc, Janet *argv) {
     return janet_wrap_nil();
 }
 
+static Janet cfun_GetMouseRay(int32_t argc, Janet *argv) {
+    janet_fixarity(argc, 2);
+    Vector2 mousePosition = jaylib_getvec2(argv, 0);
+    Camera3D *camera = jaylib_getcamera3d(argv, 1);
+    Ray ray = GetMouseRay(mousePosition, *camera);
+    return jaylib_wrap_ray(ray);
+}
+
 static Janet cfun_BeginTextureMode(int32_t argc, Janet *argv) {
     janet_fixarity(argc, 1);
     RenderTexture2D *texture = jaylib_getrendertexture(argv, 0);
@@ -1277,6 +1285,10 @@ static JanetReg core_cfuns[] = {
     {"end-mode-3d", cfun_EndMode3D, 
         "(end-mode-3d)\n\n" 
         "Ends 3D mode and returns to default 2D orthographic mode"
+    },
+    {"get-mouse-ray", cfun_GetMouseRay,
+        "(get-mouse-ray mouse-position camera)\n\n"
+        "Get a ray trace from mouse position"
     },
     {"begin-texture-mode", cfun_BeginTextureMode, 
         "(begin-texture-mode target)\n\n" 
